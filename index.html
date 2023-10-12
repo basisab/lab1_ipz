@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Числа Фібоначчі</title>
+</head>
+<body>
+    <h1>Розрахунок чисел Фібоначчі</h1>
+    <p>Введіть номер числа Фібоначчі, яке ви хочете розрахувати:</p>
+    <input type="number" id="fibonacciInput">
+    <button onclick="calculateFibonacci()">Розрахувати</button>
+    <p>Результат: <span id="fibonacciResult"></span></p>
+
+    <script>
+        function calculateFibonacci() {
+            const inputElement = document.getElementById('fibonacciInput');
+            const resultElement = document.getElementById('fibonacciResult');
+            const n = parseInt(inputElement.value);
+
+            if (!isNaN(n) && n >= 0) {
+                const fibonacciNumber = getFibonacci(n);
+                resultElement.textContent = `Число Фібоначчі з номером ${n}: ${fibonacciNumber}`;
+            } else {
+                resultElement.textContent = 'Будь ласка, введіть коректне  число.';
+            }
+        }
+
+        function getFibonacci(n) {
+            if (n <= 1) {
+                return n;
+            }
+            let a = 0, b = 1;
+            for (let i = 2; i <= n; i++) {
+                const temp = a + b;
+                a = b;
+                b = temp;
+            }
+            return b;
+        }
+    </script>
+</body>
+</html>
